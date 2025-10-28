@@ -72,4 +72,32 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         winnerText.text = $"{winner} 获胜！";
     }
+    public static UIManager Instance;
+
+    public bool HasMadeChoice { get; private set; } = false;
+    private string playerChoice = "";
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
+    public void ShowActionMenu(Character currentChar)
+    {
+        Debug.Log($"显示操作菜单（假装有按钮）：攻击/移动/技能/护盾");
+    }
+
+    public void PlayerSelectAction(string action)
+    {
+        playerChoice = action;
+        HasMadeChoice = true;
+    }
+
+    public string GetPlayerChoice() => playerChoice;
+
+    public void ResetChoice()
+    {
+        HasMadeChoice = false;
+        playerChoice = "";
+    }
 }

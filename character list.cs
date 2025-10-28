@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// =====================================
+// 钢腕
+// =====================================
 public class SteelArm : Character
 {
     private bool canActivateShield = false;
 
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "钢腕";
         health = 5;
         shield = 2;
@@ -25,22 +30,21 @@ public class SteelArm : Character
             Debug.Log("钢腕展开魔力手盾！");
             canActivateShield = false;
         }
-    }
-  
-
-    // 添加 Initialize 方法
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
+        else
+        {
+            Debug.Log("钢腕目前无法展开护盾。");
+        }
     }
 }
 
-//半魔游侠
+// =====================================
+// 半魔游侠
+// =====================================
 public class HalfDemonRanger : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "半魔游侠";
         health = 3;
         shield = 0;
@@ -54,18 +58,16 @@ public class HalfDemonRanger : Character
     {
         Debug.Log("迅捷：移动距离+1");
     }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
-    }
 }
 
-//弓箭手
+// =====================================
+// 弓箭手
+// =====================================
 public class Archer : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "弓箭手";
         health = 3;
         shield = 0;
@@ -79,19 +81,16 @@ public class Archer : Character
     {
         Debug.Log("远视：攻击距离+1");
     }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
-    }
 }
 
-
-//暗夜猎手
+// =====================================
+// 暗夜猎手
+// =====================================
 public class NightHunter : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "暗夜猎手";
         health = 3;
         shield = 0;
@@ -105,18 +104,16 @@ public class NightHunter : Character
     {
         Debug.Log("暗夜猎手发动突袭或灵动。");
     }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
-    }
 }
 
-//工程师
+// =====================================
+// 工程师
+// =====================================
 public class Engineer : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "工程师";
         health = 3;
         shield = 1;
@@ -130,18 +127,16 @@ public class Engineer : Character
     {
         Debug.Log("机械臂发动：操控目标移动！");
     }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
-    }
 }
 
-//投弹手
+// =====================================
+// 投弹手
+// =====================================
 public class Bomber : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "投弹手";
         health = 3;
         shield = 0;
@@ -154,27 +149,28 @@ public class Bomber : Character
     public override void UseAbility()
     {
         Debug.Log("艺术就是爆炸——BOOM！");
-        Die(); 
-    }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
+        Die(); // 自爆
     }
 }
 
-//圣光卫士
+// =====================================
+// 圣光卫士
+// =====================================
 public class HolyGuardian : Character
 {
-    void Start()
+    private bool usedHolyShield = false;
+
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "圣光卫士";
         health = 4;
         shield = 1;
         faction = "莱特第三共和国";
         abilityName = "破敌 / 光之圣卫";
-        abilityDescription = "破敌：对有护盾敌人额外+1伤害；光之圣卫：免疫致命伤。";
+        abilityDescription = "破敌：对有护盾敌人额外+1伤害；光之圣卫：免疫致命伤一次。";
         background = "禁军档案，机密资料。";
+        usedHolyShield = false;
     }
 
     public override void UseAbility()
@@ -184,29 +180,28 @@ public class HolyGuardian : Character
 
     protected override void Die()
     {
-        if (isAlive)
+        if (!usedHolyShield)
         {
-            Debug.Log("光之圣卫：发动，被致命伤免疫一次！");
+            usedHolyShield = true;
+            health = 1;
             isAlive = true;
-            
+            Debug.Log("光之圣卫：发动，被致命伤免疫一次！");
         }
         else
         {
             base.Die();
         }
     }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
-    }
 }
 
-//荆棘战士
+// =====================================
+// 荆棘战士
+// =====================================
 public class ThornWarrior : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "荆棘战士";
         health = 4;
         shield = 1;
@@ -220,18 +215,16 @@ public class ThornWarrior : Character
     {
         Debug.Log("能量压缩装甲激活，伤害提升！");
     }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
-    }
 }
 
-//至忠圣卫
+// =====================================
+// 至忠圣卫
+// =====================================
 public class LoyalGuardian : Character
 {
-    void Start()
+    public override void Initialize()
     {
+        base.Initialize();
         characterName = "至忠圣卫";
         health = 4;
         shield = 1;
@@ -244,11 +237,6 @@ public class LoyalGuardian : Character
     public override void UseAbility()
     {
         Debug.Log("忠诚守护：获得移动力与复活能力。");
-    }
-    public void Initialize()
-    {
-        // 在这里进行初始化设置
-        Debug.Log($"{characterName} 已初始化");
     }
 }
 
