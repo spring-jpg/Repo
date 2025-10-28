@@ -26,6 +26,14 @@ public class SteelArm : Character
             canActivateShield = false;
         }
     }
+  
+
+    // 添加 Initialize 方法
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
+    }
 }
 
 //半魔游侠
@@ -46,6 +54,11 @@ public class HalfDemonRanger : Character
     {
         Debug.Log("迅捷：移动距离+1");
     }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
+    }
 }
 
 //弓箭手
@@ -65,6 +78,11 @@ public class Archer : Character
     public override void UseAbility()
     {
         Debug.Log("远视：攻击距离+1");
+    }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
     }
 }
 
@@ -87,6 +105,11 @@ public class NightHunter : Character
     {
         Debug.Log("暗夜猎手发动突袭或灵动。");
     }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
+    }
 }
 
 //工程师
@@ -106,6 +129,11 @@ public class Engineer : Character
     public override void UseAbility()
     {
         Debug.Log("机械臂发动：操控目标移动！");
+    }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
     }
 }
 
@@ -127,6 +155,11 @@ public class Bomber : Character
     {
         Debug.Log("艺术就是爆炸——BOOM！");
         Die(); 
+    }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
     }
 }
 
@@ -162,6 +195,11 @@ public class HolyGuardian : Character
             base.Die();
         }
     }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
+    }
 }
 
 //荆棘战士
@@ -182,6 +220,11 @@ public class ThornWarrior : Character
     {
         Debug.Log("能量压缩装甲激活，伤害提升！");
     }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
+    }
 }
 
 //至忠圣卫
@@ -201,6 +244,11 @@ public class LoyalGuardian : Character
     public override void UseAbility()
     {
         Debug.Log("忠诚守护：获得移动力与复活能力。");
+    }
+    public void Initialize()
+    {
+        // 在这里进行初始化设置
+        Debug.Log($"{characterName} 已初始化");
     }
 }
 

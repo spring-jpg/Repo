@@ -16,6 +16,14 @@ public abstract class Character : MonoBehaviour
     // 可选：角色状态标识
     public bool isAlive = true;
 
+    // ? 新增：初始化方法（可被子类重写）
+    public virtual void Initialize()
+    {
+        // 这里放通用的初始化逻辑
+        isAlive = true;
+        Debug.Log($"{characterName} 初始化完成（来自 Character 基类）");
+    }
+
     // 通用方法
     public virtual void TakeDamage(int damage)
     {
